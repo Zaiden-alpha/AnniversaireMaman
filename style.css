@@ -1,0 +1,159 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(24, 111, 211);
+    flex-direction: column;
+    overflow: hidden;
+    animation: changeBackgroundColor 10s infinite;
+}
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Couvre toute la fenêtre */
+    z-index: -1; /* Derrière les autres éléments */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px; /* Ajuste la distance entre le bouton et le cœur */
+}
+
+.fireworks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Empêche d'interférer avec les autres éléments de la page */
+}
+
+.fireworks div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0080;
+    border-radius: 50%;
+    animation: explode 5s forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Texte en néon brillant */
+h1 {
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 40px #ff0080;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff0080; }
+    100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080; }
+}
+
+
+#playMusic {
+    background-color: #ff0080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+    transition: 0.3s;
+    margin-bottom: 20px; /* Augmente cet espace pour éloigner le bouton du cœur */
+}
+
+
+#playMusic:hover {
+    background-color: #d6006b;
+}
+
+/* Coeur animé */
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.2) rotate(-45deg); }
+}
+
+.heart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    transform: rotate(-45deg);
+    margin-top: 50px; /* Diminue la marge pour le remonter */
+    animation: heartbeat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+/* Ballons flottants */
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    animation: floatBalloon 6s linear infinite;
+}
+
+@keyframes floatBalloon {
+    0% { transform: translateY(0) rotate(0); }
+    100% { transform: translateY(-120vh) rotate(360deg); }
+}
+
+.balloon:nth-child(2) { left: 10%; background-color: blue; animation-duration: 7s; }
+.balloon:nth-child(3) { left: 30%; background-color: yellow; animation-duration: 6.5s; }
+.balloon:nth-child(4) { left: 50%; background-color: green; animation-duration: 7.5s; }
+.balloon:nth-child(5) { left: 70%; background-color: purple; animation-duration: 6.2s; }
+.balloon:nth-child(6) { left: 90%; background-color: orange; animation-duration: 7.3s; }
+
+/* Couleurs changeantes du fond */
+@keyframes changeBackgroundColor {
+    0% { background-color: rgb(24, 111, 211); }
+    25% { background-color: rgb(255, 99, 71); }
+    50% { background-color: rgb(34, 193, 195); }
+    75% { background-color: rgb(255, 105, 180); }
+    100% { background-color: rgb(24, 111, 211); }
+}
