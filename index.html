@@ -4,101 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyeux Anniversaire !</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: rgb(24, 111, 211);
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .heart {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            transform: rotate(-45deg);
-            margin-top: 50px;
-            animation: heartbeat 1s infinite;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -50px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: 50px;
-            top: 0;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1) rotate(-45deg); }
-            50% { transform: scale(1.2) rotate(-45deg); }
-        }
-
-        /* Effet de feux d'artifice */
-        .fireworks {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .fireworks div {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: explosion 1.5s infinite;
-        }
-
-        @keyframes explosion {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
-        /* Couleurs changeantes du fond */
-        @keyframes changeBackgroundColor {
-            0% { background-color: rgb(24, 111, 211); }
-            25% { background-color: rgb(255, 99, 71); }
-            50% { background-color: rgb(34, 193, 195); }
-            75% { background-color: rgb(255, 105, 180); }
-            100% { background-color: rgb(24, 111, 211); }
-        }
-
-        body {
-            animation: changeBackgroundColor 10s infinite;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Joyeux Anniversaire Maman ! 🎂</h1>
-    <div class="heart"></div>
+    <div class="container">
+        <div class="heart"></div>
+        <button id="playMusic">Jouer la musique</button>
+    </div>
+    
+
+    
+    <!-- Ballons flottants -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
 
     <!-- Feux d'artifice -->
     <div class="fireworks">
@@ -109,6 +32,31 @@
         <div style="top: 60%; left: 80%; animation-delay: 4s;"></div>
         <div style="top: 80%; left: 20%; animation-delay: 5s;"></div>
     </div>
+   
+
+    <!-- Balise audio pour la musique -->
+        <audio id="music" loop>
+        <source src="musique/happy_birthday.mp3" type="audio/mp3">
+        Ton navigateur ne supporte pas l'élément audio.
+        </audio>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            var music = document.getElementById("music");
+            var playButton = document.getElementById("playMusic");
+
+            playButton.addEventListener("click", function () {
+                if (music.paused) {
+                music.play();
+                playButton.textContent = "⏸️ Pause";
+                } else {
+                music.pause();
+                playButton.textContent = "🎵 Jouer la musique";
+                }
+        });
+    });
+        </script>
+
 </body>
 </html>
 
