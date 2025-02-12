@@ -13,7 +13,21 @@
         <button id="playMusic">Jouer la musique</button>
     </div>
     
+    <video autoplay loop id="bg-video" muted>
+        <source src="video/Joyeux Anniversaire.mp4" type="video/mp4">
+    </video>
 
+    <!-- Bouton pour activer le son -->
+    <button id="soundButton">Activer le son</button>
+    
+<script>
+    // Écouteur d'événement pour activer le son lorsqu'on clique sur le bouton
+    document.getElementById('soundButton').addEventListener('click', function() {
+        var video = document.getElementById('bg-video');
+        video.muted = false;  // Désactiver le mode "muted"
+        this.style.display = 'none';  // Cacher le bouton après activation du son
+    });
+</script>
     
     <!-- Ballons flottants -->
     <div class="balloon"></div>
@@ -59,4 +73,3 @@
 
 </body>
 </html>
-
